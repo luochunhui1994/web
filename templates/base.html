@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>搜索ETF</title>
+</head>
+<body>
+<form action="/gets/" method="post" target="_blank">
+
+    <p style="display: inline-block">搜索ETF: <input type="search" name="question1"  placeholder="请输入ETF代码">
+    <input type="submit"></p>
+    <p style="display: inline-block">选择板块:
+        {% for sector in sectors%}
+        <button type="submit"  name="select_sector" value={{sector}}>{{sector}}</button>
+        {%endfor%}
+</p>
+
+    <br>
+
+                {% for i in name_list %}
+                {% if name_list.index(i)%13!=0 or name_list.index(i)==0 %}
+                     <button style="width:150px" "type="submit" name="question" value="{{i.split(' ' )[1]}}">{{i.split(' ' )[0]}}</button>
+                {% else %}
+                     <br>
+                    <button style="width:150px"  type="submit" name="question" value="{{i.split(' ' )[1]}}">{{i.split(' ' )[0]}}</button>
+                {% endif %}
+            {% endfor %}
+</form>
+
+
+
+
+
+</body>
+</html>

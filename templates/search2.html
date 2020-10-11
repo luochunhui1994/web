@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="cn-zh">
+<head>
+    <script src="/static/echarts.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>搜索结果展示</title>
+</head>
+<body>
+
+        <form action="/gets/" method="post">
+        <h1>搜索结果展示</h1>
+        <hr>
+        <table border="1px" width="400px" style="float:left">
+            <tr style="text-align:center">
+                <th>股票简称</th>
+                <th>持股权重</th>
+                <th>中信一级行业</th>
+
+            </tr>
+            {% for i in items %}
+            <tr style="text-align:center">
+                <td>{{ i.stockname}}</td>
+                <td>{{ i.stockweight }}</td>
+                <td>{{ i.industry }}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+            <div id="pyecharts_pie" style="float:right"></div>
+            <script type="text/javascript">
+                var myChart=echarts.init(document.getElementById('pyecharts_pie'));
+                var option ={{ pie_options | safe }};
+                myChart.setLabelOption(option);
+            </script>
+        </form>
+
+</body>
+</html>

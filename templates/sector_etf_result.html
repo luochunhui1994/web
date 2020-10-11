@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>板块搜索结果</title>
+</head>
+<body>
+<h1>{{sector_name}}板块ETF列表</h1>
+<form action="/gets/" method="post" target="_blank">
+{%for k in sector_etf_list%}
+{%if sector_etf_list.index(k)==0 or sector_etf_list.index(k)%5!=0 %}
+<button style="width:150px"  type="submit" name="question" value="{{k.get('ETFid')}}">{{k.get('ETFname')}}</button>
+{% else %}
+<br>
+<button style="width:150px"  type="submit" name="question" value="{{k.get('ETFid')}}">{{k.get('ETFname')}}</button>
+{% endif %}
+{%endfor%}
+</form>>
+</body>
+</html>

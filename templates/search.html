@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="cn-zh">
+<head>
+    <script src="/static/echarts.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{{ name_search }}</title>
+</head>
+<body>
+
+        <form action="/gets/" method="post">
+        <h1>{{ name_search }}成分股及其行业分布</h1>
+            <p>基金规模(亿元):{{etf_scale}}</p>
+            <p>跟踪指数名称：{{index_name}} 指数代码：{{index_code}}</p>
+        <hr>
+        <table border="1px" width="400px" style="float:right">
+            <tr style="text-align:center">
+                <th>股票简称</th>
+                <th>持股权重</th>
+                <th>中信一级行业</th>
+
+            </tr>
+            {% for i in items %}
+            <tr style="text-align:center">
+                <td>{{ i.stockname}}</td>
+                <td>{{ i.stockweight }}</td>
+                <td>{{ i.industry }}</td>
+
+            </tr>
+            {% endfor %}
+            <div style="float:left"><img src={{ url_for('static',filename=matplotlib_png) }}/></div>
+        </form>
+
+</body>
+</html>
